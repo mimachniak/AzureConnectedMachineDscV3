@@ -79,13 +79,23 @@ dsc resource list | Select-String 'Microsoft.Azure.Arc/AgentConfiguration'
 
 The `AzureConnectedMachineDscv3` module exposes the class-based `AzureArcAgentConfiguration` DSC resource for Windows PowerShell 5.1, PowerShell 7 (`Invoke-DscResource`), and the DSC v3 `Microsoft.DSC/PowerShell` adapter.
 
+Install from the PowerShell Gallery:
+
 ```powershell
-# Install: copy the module to a PSModulePath location
+Install-Module -Name AzureConnectedMachineDscv3
+```
+
+Alternatively, install from a local checkout:
+
+```powershell
+# Copy the module to a PSModulePath location
 $repoRoot = "D:\Git\AzureConnectedMachineDscV3"
 Copy-Item -Path (Join-Path $repoRoot 'AzureConnectedMachineDscv3') `
     -Destination (Join-Path $env:ProgramFiles 'WindowsPowerShell\Modules\AzureConnectedMachineDscv3') `
     -Recurse -Force
+```
 
+```powershell
 # Verify discovery
 Get-DscResource -Name AzureArcAgentConfiguration -Module AzureConnectedMachineDscv3
 

@@ -15,6 +15,14 @@ The resource manages the local Azure Arc for Servers agent (`azcmagent`) configu
 
 ## Install the module
 
+### Install from the PowerShell Gallery
+
+```powershell
+Install-Module -Name AzureConnectedMachineDscv3
+```
+
+### Install from a local checkout
+
 Copy the module folder to a location listed in `$env:PSModulePath`. The path below is shared by Windows PowerShell 5.1 and PowerShell 7:
 
 ```powershell
