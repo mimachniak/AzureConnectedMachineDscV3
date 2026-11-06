@@ -1,5 +1,5 @@
 #
-# Module manifest for module 'AzureConnectedMachineDsc'
+# Module manifest for module 'AzureConnectedMachineDscv3'
 #
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
@@ -7,7 +7,7 @@
 
 @{
     # Script module or binary module file associated with this manifest.
-    RootModule           = 'AzureConnectedMachineDsc.psm1'
+    RootModule           = 'AzureConnectedMachineDscv3.psm1'
 
     # Version number of this module.
     ModuleVersion        = '1.0.0'

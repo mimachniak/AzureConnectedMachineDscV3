@@ -1,11 +1,11 @@
-# AzureConnectedMachineDsc
+# AzureConnectedMachineDscv3
 
 DSC resource for managing Azure Arc for Servers agent configuration.
 
 This repository ships two implementations:
 
 - A DSC v3 command resource: `Microsoft.Azure.Arc/AgentConfiguration` (in `dsc_resources`)
-- A class-based PowerShell DSC resource: `AzureArcAgentConfiguration` in the `AzureConnectedMachineDsc` module (in `AzureConnectedMachineDsc`)
+- A class-based PowerShell DSC resource: `AzureArcAgentConfiguration` in the `AzureConnectedMachineDscv3` module (in `AzureConnectedMachineDscv3`)
 
 Documentation:
 
@@ -77,24 +77,26 @@ dsc resource list | Select-String 'Microsoft.Azure.Arc/AgentConfiguration'
 
 ## Use the PowerShell module
 
-The `AzureConnectedMachineDsc` module exposes the class-based `AzureArcAgentConfiguration` DSC resource for Windows PowerShell 5.1, PowerShell 7 (`Invoke-DscResource`), and the DSC v3 `Microsoft.DSC/PowerShell` adapter.
+The `AzureConnectedMachineDscv3` module exposes the class-based `AzureArcAgentConfiguration` DSC resource for Windows PowerShell 5.1, PowerShell 7 (`Invoke-DscResource`), and the DSC v3 `Microsoft.DSC/PowerShell` adapter.
 
 ```powershell
 # Install: copy the module to a PSModulePath location
 $repoRoot = "D:\Git\AzureConnectedMachineDscV3"
-Copy-Item -Path (Join-Path $repoRoot 'AzureConnectedMachineDsc') `
-    -Destination (Join-Path $env:ProgramFiles 'WindowsPowerShell\Modules\AzureConnectedMachineDsc') `
+Copy-Item -Path (Join-Path $repoRoot 'AzureConnectedMachineDscv3') `
+    -Destination (Join-Path $env:ProgramFiles 'WindowsPowerShell\Modules\AzureConnectedMachineDscv3') `
     -Recurse -Force
 
 # Verify discovery
-Get-DscResource -Name AzureArcAgentConfiguration -Module AzureConnectedMachineDsc
+Get-DscResource -Name AzureArcAgentConfiguration -Module AzureConnectedMachineDscv3
 
 # Read current state
-Invoke-DscResource -Name AzureArcAgentConfiguration -ModuleName AzureConnectedMachineDsc `
+Invoke-DscResource -Name AzureArcAgentConfiguration -ModuleName AzureConnectedMachineDscv3 `
     -Method Get -Property @{ IsSingleInstance = 'Yes' }
 ```
 
 See [PowerShell module usage](docs/AzureConnectedMachineDsc-powershell-module.md) for the full property reference and examples, and [dsc_config_example/ArcAgentConfiguration.ps1](dsc_config_example/ArcAgentConfiguration.ps1) for a MOF-based configuration example.
+
+Existing configurations using `AzureConnectedMachineDsc` must be updated to use `AzureConnectedMachineDscv3`, including DSC v3 adapter resource types. The DSC resource name remains `AzureArcAgentConfiguration`.
 
 ## Run tests
 

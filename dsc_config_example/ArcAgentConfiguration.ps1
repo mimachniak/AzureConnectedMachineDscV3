@@ -12,7 +12,7 @@
 
 Configuration ArcAgentConfiguration
 {
-    Import-DscResource -ModuleName 'AzureConnectedMachineDsc'
+    Import-DscResource -ModuleName 'AzureConnectedMachineDscv3'
 
     Node 'localhost'
     {
